@@ -2,6 +2,9 @@
 
 QuantumFlux is a modern, responsive community platform designed for developers and technology enthusiasts to connect, share knowledge, and discuss topics related to game development, programming, and technology.
 
+<span style="color:red">*ADMIN* login: *test@test.test* / passwd: *password* </span>
+<span style="color:red">*USER* login: *user1@test.t* / passwd: *password* </span>
+
 ## Features
 
 - **User Authentication System**: Secure login and registration with JWT-based authentication
