@@ -2,12 +2,12 @@ import React, { useState, useEffect, useRef } from 'react';
 import { X, Hash } from 'lucide-react';
 import axios from 'axios';
 
-const NewTopicForm = ({ onClose, onSuccess }) => {
+const EditTopicForm = ({ topic, onClose, onSuccess }) => {
 	const [formData, setFormData] = useState({
-		title: '',
-		description: '',
-		category: '',
-		tags: '',
+		title: topic.title || '',
+		description: topic.description || '',
+		category: topic.category_name || '',
+		tags: (topic.tags || []).join(', '),
 	});
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
@@ -35,11 +35,9 @@ const NewTopicForm = ({ onClose, onSuccess }) => {
 
 	useEffect(() => {
 		const handleClickOutside = (event) => {
-			// Sprawdzamy czy kliknięcie było poza formularzem
 			if (formRef.current && !formRef.current.contains(event.target)) {
 				onClose();
 			}
-			// Sprawdzamy czy kliknięcie było poza inputem kategorii
 			if (
 				categoryInputRef.current &&
 				!categoryInputRef.current.contains(event.target)
@@ -65,8 +63,8 @@ const NewTopicForm = ({ onClose, onSuccess }) => {
 			.filter((tag) => tag.length > 0);
 
 		try {
-			await axios.post(
-				'http://localhost:3001/api/topics',
+			await axios.put(
+				`http://localhost:3001/api/topics/${topic.id}`,
 				{
 					title: formData.title,
 					description: formData.description,
@@ -86,7 +84,8 @@ const NewTopicForm = ({ onClose, onSuccess }) => {
 		} catch (error) {
 			console.error('Błąd:', error.response?.data || error);
 			setError(
-				error.response?.data?.error || 'Wystąpił błąd podczas dodawania tematu'
+				error.response?.data?.error ||
+					'Wystąpił błąd podczas aktualizacji tematu'
 			);
 		} finally {
 			setIsLoading(false);
@@ -114,7 +113,7 @@ const NewTopicForm = ({ onClose, onSuccess }) => {
 			className='w-full max-w-2xl mx-auto bg-gray-800 rounded-lg p-6'
 			ref={formRef}>
 			<div className='flex justify-between items-center mb-6'>
-				<h2 className='text-xl font-bold text-gray-100'>Nowy temat</h2>
+				<h2 className='text-xl font-bold text-gray-100'>Edytuj temat</h2>
 				<button
 					onClick={onClose}
 					className='text-gray-400 hover:text-gray-200 transition-colors duration-200'>
@@ -242,7 +241,7 @@ const NewTopicForm = ({ onClose, onSuccess }) => {
 						type='submit'
 						disabled={isLoading}
 						className='px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-md transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed'>
-						{isLoading ? 'Dodawanie...' : 'Dodaj temat'}
+						{isLoading ? 'Zapisywanie...' : 'Zapisz zmiany'}
 					</button>
 				</div>
 			</form>
@@ -250,4 +249,4 @@ const NewTopicForm = ({ onClose, onSuccess }) => {
 	);
 };
 
-export default NewTopicForm;
+export default EditTopicForm;
