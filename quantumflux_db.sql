@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 28, 2025 at 02:15 PM
+-- Generation Time: Feb 28, 2025 at 02:29 PM
 -- Wersja serwera: 10.4.28-MariaDB
 -- Wersja PHP: 8.2.4
 
@@ -200,8 +200,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `email`, `password`, `first_name`, `last_name`, `role`, `is_active`, `avatar_url`, `github_url`, `created_at`, `updated_at`) VALUES
-(1, 'test', 'test@test.test', '$2b$10$VaqjGVKxXPR/bqysXJAp.uwbPhCvgrro9TgIDFQmc8ENgJQwxW81G', 'test', 'test', 'admin', 1, NULL, NULL, '2025-02-19 20:35:03', '2025-02-28 13:13:37'),
-(2, 'User1', 'user1@test.t', '$2b$10$HwYH5hXfUmaXfj96.cra8OHMhNEtxV2rzbTXiBkzQpA8vlWYgi9Pu', 'user1', 'user1', 'user', 1, NULL, NULL, '2025-02-19 20:56:10', '2025-02-19 20:57:27');
+(1, 'test', 'test@test.test', '$2b$10$/36pBqkbwZ4x.TCmkzc70eVypOpnAJdFNyIipaN5O4pSCPheZxr2y', 'test', 'test', 'admin', 1, NULL, NULL, '2025-02-19 20:35:03', '2025-02-28 13:25:41'),
+(2, 'User1', 'user1@test.t', '$2b$10$GasKQT.RDXppY/WoB9q0CuYRkjuLsg2NaZZpJf0QgpvjLRNNPnGqG', 'user1', 'user1', 'user', 1, NULL, NULL, '2025-02-19 20:56:10', '2025-02-28 13:23:17');
 
 -- --------------------------------------------------------
 
