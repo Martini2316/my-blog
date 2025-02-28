@@ -40,14 +40,11 @@ QuantumFlux is a modern, responsive community platform designed for developers a
 ### Database Setup
 1. Create a MySQL database for the application
 2. Import the database schema from the `schema.sql` file:
-   ```bash
-   mysql -u your_username -p your_database_name < schema.sql
-   ```
 
 ### Backend Setup
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/quantumflux.git
+   git clone https://github.com/Martini2316/quantumflux.git
    cd quantumflux
    ```
 
